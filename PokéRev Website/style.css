@@ -1,3 +1,22 @@
+:root {
+  --font: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+@keyframes linkFade {
+  from { color: #ffffff; }
+  to { color: #5865f2;}
+}
+
+@keyframes buttonFade {
+  from { background-color: #ffffff; color: #1c2022; border-color: #ffffff;}
+  to { background-color: #5865f2; color: #ffffff; border-color: #5865f2; }
+}
+
+@keyframes mainButtonFade {
+  from { background-color: #5865f2; color: #ffffff; border-color: #5865f2; }
+  to {background-color: #ffffff; color: #1c2022; border-color: #ffffff; }
+}
+
 html, body {
   height: 100%;
   margin: 0;
@@ -8,37 +27,35 @@ html, body {
 body {
   background-color: #2c2f33;
   min-height: screen;
-  justify-content: space-between;
+  overflow-x: hidden;
 }
 
-header {
-  color: white;
+header, main {
+  color: #ffffff;
   text-align: center;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-main {
-  color: white;
-  text-align: center;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: var(--font, Verdana);
 }
 
 #add_bot {
-  color: white;
+  color: #ffffff;
   width: 17rem;
   height: 4rem;
-  padding: 1;
+  padding: 1rem;
   background-color: #5865f2;
   border-radius: 50px;
   font-size: 1.5rem;
-  border: none;
   border: 2px solid;
   border-color: #5865f2;
   margin-bottom: 50px;
 }
 
+#add_bot:hover {
+  animation: mainButtonFade 1s forwards;
+  cursor: pointer;
+}
+
 .directory {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
@@ -52,100 +69,119 @@ main {
 }
 
 .add_btn {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: var(--font, Verdana);
   border-radius: 12px;
   height: 2rem;
   width: 10rem;
-  border: none;
-  border: 2px solid;
-  border-color: white;
+  border: 2px solid #ffffff;
   color: #2c2f33;
   margin-right: 20px;
 }
 
+.add_btn:hover {
+  animation: buttonFade 0.7s forwards;
+  cursor: pointer;
+}
+
 a:link {
-  color: white;
+  color: #ffffff;
   text-decoration: none;
   margin: 10px;
 }
 
 a:visited {
-  color: white;
+  color: #ffffff;
   text-decoration: none;
-  margin: 20px;
+  margin: 10px;
+}
+
+a:hover {
+  color: #5865f2;
+  animation: linkFade 1s forwards;
 }
 
 #logo {
-  color: white;
+  color: #ffffff;
   font-family: Arial, Helvetica, sans-serif;
   margin: 10px;
   font-weight: bold;
 }
 
-.dir_info {
-  text-align: right;
+.features {
+  display: grid;
+  gap: 100px;
+  grid-template-columns: auto auto auto;
+  justify-content: center;
 }
 
-.features-1, .features-2 {
-  border-radius: 20px;
-  background-color: #2c2f33;
-  color: white;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  margin: 20px;
-  padding: 20px;
-  width: calc(100% - 40px); 
-  box-sizing: border-box; 
+.item {
+  margin: 20px 0 20px 0;
+  padding: 10px;
+  background-color: #5865f2;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
-.features-1 .funnel, .features-1 .house, .features-1 .info,
-.features-2 .staff, .features-2 .duel, .features-2 .more {
-  background-color: #5865f2; 
-  border-radius: 10px;
-  margin: 10px;
-  padding: 15px;
-  text-align: center;
-  flex: 1 1 200px;
-  max-width: 200px;
-}
-
-.features-1 div, .features-2 div {
-  text-align: center;
-  margin: 10px;
-  flex: 1 1 150px;
-  max-width: 150px;
-}
-
-.features-1 img, .features-2 img {
-  display: block;
-  margin: 0 auto;
-  max-width: 100%;
-  height: auto;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 16px;
+  color: #ffffff;
+  width: 200px;
 }
 
 #desc {
-  margin-right: 40px;
-  margin-left: 40px;
+  text-align: center;
+  margin: 40px;
 }
 
 footer {
+  display: flex;
+  justify-content: space-between;
   left: 0;
   bottom: 0;
   width: 100%;
-  color: white;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #ffffff;
+  font-family: var(--font, Verdana);
   background-color: #1c2022;
-  text-align: center;
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    a:link {
+      margin: 0;
+    }
+  }
 }
 
-#footer_img {
-  margin-left: 20px;
-  float: left;
-}
+@media only screen and (max-width: 500px) {
+  body {
+    overflow-x: hidden;
+  }
 
-.footer_links {
-  text-align: center;
-  margin: 20px;
+  .features {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .directory {
+    width: 100vw;
+    padding: 0;
+
+    a {
+      margin: 10px;
+    }
+    
+    .add_btn {
+      margin: 10px 0 10px 10px;
+    }
+  }
+
+  .features {
+    gap: 10px;
+  }
+
+  footer {
+    width: 100vw;
+  }
 }
