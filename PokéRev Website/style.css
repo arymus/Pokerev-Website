@@ -169,11 +169,11 @@ footer {
     padding: 0;
 
     a {
-      margin: 10px;
+      margin: 0 10px 0 0;
     }
     
     .add_btn {
-      margin: 10px 0 10px 10px;
+      margin: 10px;
     }
   }
 
